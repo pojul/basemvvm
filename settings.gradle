@@ -1,0 +1,6 @@
+rootProject.name = "MvvmDemo"
+include ':app'
+/** please not modify, {versionCode: 1} AutoIntegrate third_libs start **/
+include ':third_libs'
+/** please not modify, {versionCode: 1} AutoIntegrate third_libs end **/
+include ':basemvvm'

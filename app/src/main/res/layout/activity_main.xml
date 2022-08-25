@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.test.mvvm.viewmodel.MainActVM" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.MainActivity"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/photo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:imageUrl="@{data.user.photo}"
+            app:placeHolder="@{@drawable/ic_launcher_background}"
+            android:padding="5dp"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.user.nickName}"
+            android:layout_alignTop="@id/photo"
+            android:layout_toRightOf="@id/photo"
+            android:textColor="@color/black"
+            />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignTop="@id/photo"
+            android:layout_toRightOf="@id/name"
+            android:padding="3dp"
+            android:src="@{data.user.sex==0?@drawable/woman:@drawable/man}"/>
+
+        <EditText
+            android:id="@+id/et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="180dp"
+            android:layout_alignBottom="@id/photo"
+            android:layout_toRightOf="@id/photo"
+            android:text="@={data.user.userName}"
+            />
+
+        <Button
+            android:id="@+id/bt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/et"
+            android:text="@{data.user.nickName}"
+            android:onClick="click" />
+
+        <Button
+            android:id="@+id/bt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/bt1"
+            android:text="click2"
+            android:onClick="click" />
+
+        <Button
+            android:id="@+id/bt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/bt2"
+            android:text="click3"
+            android:onClick="click" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_news"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/bt3"
+            />
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="data"
+            type="com.test.mvvm.model.New" />
+
+        <variable
+            name="itemclidk"
+            type="com.test.mvvm.ui.adapter.NewsAdapter.ItemClickListener" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:clickable="true"
+        android:onClick="@{(view)->itemclidk.click(data)}"
+        >
+
+        <ImageView
+            android:id="@+id/item_news_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:imageUrl="@{data.imageUrl}"/>
+
+        <TextView
+            android:id="@+id/item_news_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/item_news_img"
+            android:layout_alignParentRight="true"
+            android:text="@{data.title}"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/item_news_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/item_news_img"
+            android:layout_below="@id/item_news_title"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:text="@{data.simpleDesc}"
+            android:layout_marginLeft="10dp"/>
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="15dp"
+            android:src="@{data.hasThumbsUp?@drawable/thumbs_up:@drawable/unthumbs_up}"/>
+
+    </RelativeLayout>
+</layout>
