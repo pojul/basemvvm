@@ -47,7 +47,7 @@
             android:minWidth="180dp"
             android:layout_alignBottom="@id/photo"
             android:layout_toRightOf="@id/photo"
-            android:text="@={data.user.userName}"
+            android:text="@={data.user.nickName}"
             />
 
         <Button

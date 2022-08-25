@@ -34,15 +34,15 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainActVM> {
         switch (view.getId()){
             case R.id.bt1:
                 Toast.makeText(MainActivity.this, "bt1 click: "
-                        + binding.name.getText().toString(), Toast.LENGTH_LONG).show();
+                        + viewModel.user.get().getNickName(), Toast.LENGTH_LONG).show();
                 viewModel.getNews();
                 break;
             case R.id.bt2:
                 viewModel.getUserInfo();
                 break;
             case R.id.bt3:
-                viewModel.user.getValue().setNickName(binding.et.getText().toString());
-                viewModel.user.getValue().setPhoto("https://img.wxcha.com/m00/86/59/7c6242363084072b82b6957cacc335c7.jpg");
+//                viewModel.user.getValue().setNickName(binding.et.getText().toString());
+                viewModel.user.get().setPhoto("https://img.wxcha.com/m00/86/59/7c6242363084072b82b6957cacc335c7.jpg");
                 break;
         }
     }

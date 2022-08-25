@@ -3,7 +3,7 @@ package com.test.mvvm.viewmodel;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.lifecycle.MutableLiveData;
+import androidx.databinding.ObservableField;
 
 import com.test.mvvm.databinding.ActivityMainBinding;
 import com.pojul.basemvvm.network.BaseCallback;
@@ -18,18 +18,18 @@ import java.util.HashMap;
 
 public class MainActVM extends BaseActVM<ActivityMainBinding>{
 
-    public MutableLiveData<User> user = new MutableLiveData<>();
+    public ObservableField<User> user = new ObservableField<>();
     private NewsAdapter newsAdapter;
 
     @Override
     public void initData() {
-        user.setValue(new User());
         newsAdapter = new NewsAdapter();
         binding.rvNews.setAdapter(newsAdapter);
         newsAdapter.setItemClickListener(item -> {
             item.setHasThumbsUp(!item.isHasThumbsUp());
             Toast.makeText(activity, "ItemClick: " + item.getTitle(), Toast.LENGTH_LONG).show();
         });
+        getUserInfo();
         getNews();
     }
 
@@ -38,7 +38,7 @@ public class MainActVM extends BaseActVM<ActivityMainBinding>{
             @Override
             public void onSuccess(GetUserResp resp) {
                 Log.e("getUserInfo", "onSuccess");
-                user.setValue(resp.user);
+                user.set(resp.user);
             }
 
             @Override
